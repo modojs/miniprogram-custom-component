@@ -1,5 +1,5 @@
 {
-  "name": "navigationbar",
+  "name": "miniprogram-custom-component",
   "version": "1.0.0",
   "description": "",
   "main": "miniprogram_dist/index.js",
