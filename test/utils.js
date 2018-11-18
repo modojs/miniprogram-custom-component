@@ -1,4 +1,4 @@
-module.exports = require('../tools/test/helper')
+module.exports = require('../tools/test/helper');
 
 const noop = () => {};
 
@@ -101,20 +101,20 @@ global.wx = {
       version: '6.6.3',
       windowHeight: 672,
       windowWidth: 414,
-    }
-    typeof options.success === 'function' && options.success(res)
-    typeof options.complete === 'function' && options.complete(res)
+    };
+    typeof options.success === 'function' && options.success(res);
+    typeof options.complete === 'function' && options.complete(res);
   },
   getSystemInfoSync() {
-    let info = {}
+    let info = {};
     wx.getSystemInfo({
       success(res) {
-        info = res
-      }
-    })
+        info = res;
+      },
+    });
 
-    delete info.errMsg
-    return info
+    delete info.errMsg;
+    return info;
   },
   canIUse: noop,
 
@@ -284,6 +284,6 @@ global.wx = {
   getLogManager: noop,
 
   reportMonitor: noop,
-  
+
   setEnableDebug: noop,
-}
+};

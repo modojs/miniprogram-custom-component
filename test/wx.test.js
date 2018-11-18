@@ -1,17 +1,17 @@
-const _ = require('./utils')
+// const _ = require('./utils');
 
 test('wx.getSystemInfo', async () => {
   wx.getSystemInfo({
     success(res) {
-      expect(res.errMsg).toBe('getSystemInfo:ok')
+      expect(res.errMsg).toBe('getSystemInfo:ok');
     },
     complete(res) {
-      expect(res.errMsg).toBe('getSystemInfo:ok')
+      expect(res.errMsg).toBe('getSystemInfo:ok');
     },
-  })
-})
+  });
+});
 
 test('wx.getSystemInfoSync', async () => {
-  const info = wx.getSystemInfoSync()
-  expect(info.SDKVersion).toBe('2.3.0')
-})
+  const info = wx.getSystemInfoSync();
+  expect(info.SDKVersion).toBe('2.3.0');
+});
