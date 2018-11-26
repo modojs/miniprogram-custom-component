@@ -1,24 +1,42 @@
 const path = require('path');
+const fs = require('fs');
 
 const _ = require('./utils');
 const config = require('./config');
 
 const srcPath = config.srcPath;
 
+const getExtName = function () {
+  return new Promise((resolve, reject) => {
+    let extname = '.js';
+    fs.readdir(srcPath, function (err, files) {
+      const tsFiles = files.filter(el => /\.ts$/.test(el));
+      if (tsFiles.length) {
+        extname = '.ts';
+        resolve(extname);
+      } else {
+        resolve(extname);
+      }
+    });
+  });
+};
+
 /**
  * get json path's info
  */
-function getJsonPathInfo(jsonPath) {
+async function getJsonPathInfo(jsonPath) {
   const dirPath = path.dirname(jsonPath);
   const fileName = path.basename(jsonPath, '.json');
   const relative = path.relative(srcPath, dirPath);
   const fileBase = path.join(relative, fileName);
+  const extname = await getExtName();
 
   return {
     dirPath,
     fileName,
     relative,
     fileBase,
+    extname
   };
 }
 
@@ -30,8 +48,7 @@ async function checkIncludedComponents(jsonPath, componentListMap) {
   const json = _.readJson(jsonPath);
   if (!json) throw new Error(`json is not valid: "${jsonPath}"`);
 
-  const { dirPath, fileName, fileBase } = getJsonPathInfo(jsonPath);
-
+  const { dirPath, fileName, fileBase, extname } = await getJsonPathInfo(jsonPath);
   for (let i = 0, len = checkProps.length; i < len; i++) {
     const checkProp = checkProps[i];
     const checkPropValue = json[checkProp] || {};
@@ -64,9 +81,9 @@ async function checkIncludedComponents(jsonPath, componentListMap) {
   componentListMap.wxmlFileList.push(`${fileBase}.wxml`);
   componentListMap.wxssFileList.push(`${fileBase}.wxss`);
   componentListMap.jsonFileList.push(`${fileBase}.json`);
-  componentListMap.jsFileList.push(`${fileBase}.js`);
+  componentListMap.jsFileList.push(`${fileBase}${extname}`);
 
-  componentListMap.jsFileMap[fileBase] = `${path.join(dirPath, fileName)}.js`;
+  componentListMap.jsFileMap[fileBase] = `${path.join(dirPath, fileName)}${extname}`;
 }
 
 module.exports = async function (entry) {
@@ -81,10 +98,10 @@ module.exports = async function (entry) {
 
   const isExists = await _.checkFileExists(entry);
   if (!isExists) {
-    const { dirPath, fileName, fileBase } = getJsonPathInfo(entry);
+    const { dirPath, fileName, fileBase, extname } = await getJsonPathInfo(entry);
 
-    componentListMap.jsFileList.push(`${fileBase}.js`);
-    componentListMap.jsFileMap[fileBase] = `${path.join(dirPath, fileName)}.js`;
+    componentListMap.jsFileList.push(`${fileBase}${extname}`);
+    componentListMap.jsFileMap[fileBase] = `${path.join(dirPath, fileName)}${extname}`;
 
     return componentListMap;
   }

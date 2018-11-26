@@ -12,7 +12,7 @@ module.exports = {
     jest: true,
   },
   plugins: ['import', 'node', 'promise'],
-  globals: {
+  "globals": {
     window: true,
     document: true,
     App: true,
