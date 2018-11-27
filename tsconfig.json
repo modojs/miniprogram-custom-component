@@ -3,7 +3,7 @@
     "module": "commonjs",
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "target": "es6",
+    "target": "es5",
     "noImplicitAny": true,
     "strict": true,
     "sourceMap": true,
