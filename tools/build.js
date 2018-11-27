@@ -211,7 +211,7 @@ class BuildTask {
     /**
      * copy wxml to the dist folder
      */
-    gulp.task(`${id}-component-wxml`, (done) => {
+    gulp.task(`${id}-component-wxml`, done => {
       const wxmlFileList = this.componentListMap.wxmlFileList;
 
       if (
@@ -246,6 +246,20 @@ class BuildTask {
      * generate js to the dist folder
      */
     gulp.task(`${id}-component-js`, (done) => {
+      const jsFileList = this.componentListMap.jsFileList;
+
+      if (
+        jsFileList
+        && jsFileList.length
+        && !_.compareArray(this.cachedComponentListMap.jsFileList, jsFileList)
+      ) {
+        js(this.componentListMap.jsFileMap, this);
+      }
+
+      return done();
+    });
+
+    gulp.task(`${id}-component-ts`, (done) => {
       const jsFileList = this.componentListMap.jsFileList;
 
       if (
@@ -296,6 +310,7 @@ class BuildTask {
           `${id}-component-wxml`,
           `${id}-component-wxss`,
           `${id}-component-js`,
+          `${id}-component-ts`,
           `${id}-component-json`,
         ),
       ),
@@ -304,9 +319,9 @@ class BuildTask {
     /**
      * watch wxml
      */
-    gulp.task(`${id}-watch-wxml`, () => {
+    gulp.task(`${id}-watch-wxml`, async () => {
       this.cachedComponentListMap.wxmlFileList = null;
-      return gulp.watch(
+      return await gulp.watch(
         this.componentListMap.wxmlFileList,
         { cwd: srcPath, base: srcPath },
         gulp.series(`${id}-component-wxml`),
@@ -374,6 +389,7 @@ class BuildTask {
           `${id}-component-wxml`,
           `${id}-component-wxss`,
           `${id}-component-js`,
+          `${id}-component-ts`,
           `${id}-component-json`,
           `${id}-copy`,
         ),
@@ -392,7 +408,7 @@ class BuildTask {
           `${id}-watch-json`,
           `${id}-watch-copy`,
           `${id}-watch-install`,
-          `${id}-watch-demo`,
+          // `${id}-watch-demo`,
         ),
       ),
     );

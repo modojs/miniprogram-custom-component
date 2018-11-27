@@ -41,11 +41,38 @@ module.exports = {
           use: ['babel-loader', 'eslint-loader'],
           exclude: /node_modules/,
         },
+        {
+          test: /\.ts$/,
+          enforce: 'pre',
+          exclude: [
+            /node_modules/
+          ],
+          use: [{
+            loader: 'tslint-loader',
+            options: {
+              fix: true,
+              typeCheck: true,
+              configFile: './tsconfig.json',
+              configuration: './tslint.json',
+            }
+          }]
+        },
+        {
+          test: /\.ts?$/,
+          include: /src/,
+          exclude: /node_modules/,
+          use: [{
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            }
+          }]
+        },
       ],
     },
     resolve: {
       modules: [src, 'node_modules'],
-      extensions: ['.js', '.json'],
+      extensions: ['.js', '.json', 'ts', 'tsx'],
     },
     plugins: [
       new webpack.DefinePlugin({}),
