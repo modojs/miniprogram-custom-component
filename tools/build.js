@@ -408,7 +408,7 @@ class BuildTask {
           `${id}-watch-json`,
           `${id}-watch-copy`,
           `${id}-watch-install`,
-          // `${id}-watch-demo`,
+          `${id}-watch-demo`,
         ),
       ),
     );
