@@ -1,13 +1,13 @@
 # Switch
 ## Usage
 ##### [page/component].json
-(```)
+```
     {
       "usingComponents": {
         "modo-switch": "path/mode/switch/index"
       }
     }
-(```)
+```
 ## Properties
 | Name | Type | Default | Description |
 | :-----------: | :-----------: | :-----------: | :-----------: |
