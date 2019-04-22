@@ -1,16 +1,20 @@
 Component({
   properties: {
-    isOpen: {
+    value: {
       type: Boolean,
       value: false
     },
+    showText: {
+      type: Boolean,
+      value: true
+    }
   },
   lifetimes: {
   },
   methods: {
     handleToggle() {
       this.setData({
-        isOpen: !this.data.isOpen
+        value: !this.data.value
       });
     }
   }

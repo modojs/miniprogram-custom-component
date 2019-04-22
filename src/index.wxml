@@ -1,6 +1,6 @@
 <view class="switch">
-    <text>{{isOpen ? '是' : '否'}}</text>
-    <view class="switch-body {{isOpen && 'close-status'}}" bind:tap="handleToggle">
-        <view class="switch-button" style="left: {{isOpen ? '19px': '0'}};"></view>
+    <text wx:if="{{showText}}">{{value ? '是' : '否'}}</text>
+    <view class="switch-body {{value && 'close-status'}}" bind:tap="handleToggle">
+        <view class="switch-button" style="left: {{value ? '19px': '0'}};"></view>
     </view>
 </view>
