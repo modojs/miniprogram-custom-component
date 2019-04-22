@@ -1,6 +1,12 @@
 # miniprogram-custom-component
 
-小程序自定义组件脚手架
+小程序自定义组件开发模板：
+
+* 支持 less 编写 wxss
+* 使用 webpack 构建 js
+* 支持自定义组件单元测试
+* 支持 eslint
+* 支持多入口构建
 
 ## 使用
 
@@ -73,19 +79,14 @@ npm publish
 |--miniprogram_dev // 开发环境构建目录
 |--miniprogram_dist // 生产环境构建目录
 |--src // 源码
-|   |--common // 通用 js 模块
 |   |--components // 通用自定义组件
 |   |--images // 图片资源
-|   |--wxml // 通用 wxml 模版资源
-|   |--wxs // 通用 wxs 资源
-|   |--wxss // 通用 wxss 资源
 |   |
 |   |--xxx.js/xxx.wxml/xxx.json/xxx.wxss // 暴露的 js 模块/自定义组件入口文件
 |
 |--test // 测试用例
 |--tools // 构建相关代码
 |   |--demo // demo 小程序目录，开发环境下会被拷贝生成到 miniprogram_dev 目录中
-|   |--test // 测试工具相关目录
 |   |--config.js // 构建相关配置文件
 |
 |--gulpfile.js
@@ -107,9 +108,7 @@ npm run test
 npm run coverage
 ```
 
-测试用例放在 test 目录下，其中 test/utils 是已封装好可在测试用例中使用的工具包，具体使用文档请[点击此处查看](./docs/test.md)。在测试中可能需要用到官方提供的一些接口（如`wx.getSystemInfo`），可在 test/utils 下自行模拟实现（里面已内置部分模拟接口）。
-
-> 目前测试框架仍有部分自定义组件的功能不支持（可参考测试工具包使用文档中的 TODO 列表），后续会逐步进行支持。
+测试用例放在 test 目录下，使用 **miniprogram-simulate** 工具集进行测试，[点击此处查看](https://github.com/wechat-miniprogram/miniprogram-simulate/blob/master/README.md)使用方法。在测试中可能需要变更或调整工具集中的一些方法，可在 test/utils 下自行实现。
 
 ## 其他命令
 

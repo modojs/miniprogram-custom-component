@@ -16,14 +16,15 @@ module.exports = {
 
   isDev,
   isWatch,
-  srcPath: src,
-  distPath: isDev ? dev : dist,
+  srcPath: src, // 源目录
+  distPath: isDev ? dev : dist, // 目标目录
 
-  demoSrc,
-  demoDist,
+  demoSrc, // demo 源目录
+  demoDist, // demo 目标目录
 
   wxss: {
-    sass: true
+    sass: true,
+    sourcemap: false, // 生成 sass sourcemap
   },
 
   webpack: {
@@ -88,5 +89,5 @@ module.exports = {
     },
   },
 
-  copy: ['./wxml', './wxss', './wxs', './images'], // will copy to dist
+  copy: ['./images'], // will copy to dist
 };
