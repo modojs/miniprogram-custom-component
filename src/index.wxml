@@ -1,1 +1,6 @@
-<view class="index">{{prop}}</view>
+<view class="switch">
+    <text>{{isOpen ? '是' : '否'}}</text>
+    <view class="switch-body" class="{{isOpen && 'close-status'}}">
+        <view class="switch-button" style="left: {{isOpen ? '22rpx': 0}};" bind:tap="handleToggle"></view>
+    </view>
+</view>

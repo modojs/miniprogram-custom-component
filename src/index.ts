@@ -1,8 +1,8 @@
 Component({
   properties: {
-    prop: {
-      type: String,
-      value: '你不知道的事情还有很多'
+    isOpen: {
+      type: Boolean,
+      value: false
     },
   },
   lifetimes: {
@@ -20,6 +20,9 @@ Component({
   methods: {
     showSomeThing(title) {
       console.log('you dont know', title);
+    },
+    handleToggle() {
+      this.isOpen = !this.Open;
     }
   }
 });

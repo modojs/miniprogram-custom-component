@@ -1,3 +1,32 @@
-.index {
-  color: green;
+.switch {
+  height: 24rpx;
+  line-height: 24rpx;
+  font-size: 16rpx;
+  color: #8B8FAE;
+}
+
+.switch .switch-body {
+  width: 40rpx;
+  height: inherit;
+  border: 3rpx solid #656CE8;
+  background-color: #656CE8;
+  margin-left: 5rpx;
+  position: relative;
+}
+
+.switch .switch-body .switch-button {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 5;
+  transition: left .3s;
+}
+
+.switch .switch-body.close-status {
+  background-color: #CDD4FF;
 }
