@@ -1,4 +1,4 @@
 <view class="index">
 	<text>设置</text>
-	<modo-switch isOpen="{{false}}"></modo-switch>
+	<modo-switch isOpen="{{false}}" bind:change="handleChange"></modo-switch>
 </view>

@@ -23,17 +23,11 @@ view, label, button, text{
 .switch .switch-body {
   width: 80rpx;
   height: inherit;
-  border: 6rpx solid #656CE8;
   border-radius: 24rpx;
   background-color: #656CE8;
   margin-left: 10rpx;
   position: relative;
   box-sizing: border-box;
-}
-
-.switch .switch-body.close-status {
-  background-color: #CDD4FF;
-  border-color: #CDD4FF;
 }
 
 .switch .switch-body .switch-button {
@@ -47,6 +41,6 @@ view, label, button, text{
   bottom: 0;
   margin: auto;
   z-index: 5;
-  transition: left .3s;
+  transition: all .3s;
   box-sizing: border-box;
 }
