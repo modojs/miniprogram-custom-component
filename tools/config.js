@@ -33,8 +33,8 @@ module.exports = {
       filename: '[name].js',
       libraryTarget: 'commonjs2',
     },
-    target: 'node',
-    externals: [nodeExternals()], // ignore node_modules
+    target: 'node', // in order to ignore built-in modules like path, fs, etc.
+    externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
     module: {
       rules: [
         {
@@ -59,7 +59,7 @@ module.exports = {
           }]
         },
         {
-          test: /\.ts?$/,
+          test: /\.tsx?$/,
           include: /src/,
           exclude: /node_modules/,
           use: [{
@@ -72,11 +72,10 @@ module.exports = {
       ],
     },
     resolve: {
-      modules: [src, 'node_modules'],
+      modules: ['node_modules'],
       extensions: ['.js', '.json', 'ts', 'tsx'],
     },
     plugins: [
-      new webpack.DefinePlugin({}),
       new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
     ],
     optimization: {
