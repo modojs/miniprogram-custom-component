@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "modo-switch": "/components/index"
+    "modo-swiper": "/components/index"
   }
 }

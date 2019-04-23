@@ -1,13 +1,3 @@
 .index {
-    padding: 38rpx 30rpx;
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.index text {
-    font-size: 32rpx;
-    color: #111111;
-    font-weight: bold;
+    width: 100%;
 }

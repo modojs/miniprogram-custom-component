@@ -1,4 +1,8 @@
 <view class="index">
-	<text>设置</text>
-	<modo-switch isOpen="{{false}}" bind:change="handleChange"></modo-switch>
+	<modo-swiper originalList="{{originalList}}"
+							 indicator-type="pagination"
+							 indicator-position="right"
+							 image-mode="aspectFill"
+							 errImage-replace="https://cdn.pixabay.com/photo/2016/04/24/13/24/error-1349562_960_720.png"
+	></modo-swiper>
 </view>
